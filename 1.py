@@ -24,3 +24,4 @@ for i in range(2, quantity_row + 1):
     a = str('=ВПР(RC[-1];[Классификатор_стран.xlsx]Лист2!C1:C2;2;ЛОЖЬ)')
     d = sheet.cell(row=i, column=76, value=a)
 wb.save('D:\\Работа\\Химия\\Хлорид железа\\Импорт_хлорид железа1_1.xlsx')
+
