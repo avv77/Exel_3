@@ -1,5 +1,6 @@
 import openpyxl
 
+
 path = 'D:\\Работа\\Химия\\Хлорид железа\\Импорт_хлорид железа1.xlsx'
 wb = openpyxl.load_workbook(path)
 sheet = wb.active
@@ -18,10 +19,11 @@ sheet['BX1'] = 'Страны'
 quantity_row = sheet.max_row
 quantity_column = sheet.max_column
 for i in range(2, quantity_row + 1):
-    i = str(i)
-    a = sheet['BX' + i]
-    i = int(i)
-    a = str('=ВПР(RC[-1];[Классификатор_стран.xlsx]Лист2!C1:C2;2;ЛОЖЬ)')
+    formula = '=SIN([1_1.xlsx]Sheet2!R4C9'
+    d = sheet.cell(row=i, column=76, value='{' + formula + '}')
+    b = str(d.value)
+    c = b.replace('{', '')
+    a = c.replace('}', '')
     d = sheet.cell(row=i, column=76, value=a)
-wb.save('D:\\Работа\\Химия\\Хлорид железа\\Импорт_хлорид железа1_1.xlsx')
 
+wb.save('D:\\Работа\\Химия\\Хлорид железа\\Импорт_хлорид железа1_1.xlsx')
