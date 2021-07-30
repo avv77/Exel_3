@@ -1,6 +1,6 @@
 import openpyxl
 
-path = 'D:\\Работа\\Химия\\Хлорид железа\\Импорт_хлорид железа_1.xlsx'
+path = 'D:\\Обработка файлов таможни\\Пример.xlsx'
 wb = openpyxl.load_workbook(path)
 sheet = wb['2019']
 quantity_row = sheet.max_row
@@ -30,12 +30,12 @@ for i in range(1, quantity_row_1 + 1):
 
 
 sheet = wb['2019']
-sheet.insert_cols(idx=76)  # добавляем столбец "Страны"
-sheet['BX1'] = 'Страны'
+sheet.insert_cols(idx=66)  # добавляем столбец "Страны"
+sheet['BN1'] = 'Страны'
 quantity_row = sheet.max_row  # считаем количество строк
 for i in range(2, quantity_row + 1):
-    formula = '=VLOOKUP(BW2, Prob!A:B, 2, 0)'
-    d = sheet.cell(row=i, column=76, value=formula)
+    formula = '=VLOOKUP(BM' + str(i) + ', Prob!A:B, 2, 0)'
+    d = sheet.cell(row=i, column=66, value=formula)
 
-wb.save('D:\\Работа\\Химия\\Хлорид железа\\Импорт_хлорид железа1_1.xlsx')
+wb.save('D:\\Обработка файлов таможни\\Пример_1.xlsx')
 
