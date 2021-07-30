@@ -38,3 +38,4 @@ for i in range(2, quantity_row + 1):
     d = sheet.cell(row=i, column=76, value=formula)
 
 wb.save('D:\\Работа\\Химия\\Хлорид железа\\Импорт_хлорид железа1_1.xlsx')
+
