@@ -29,13 +29,33 @@ for i in range(1, quantity_row_1 + 1):
         c = sheet2.cell(row=i, column=j, value=b)
 
 
-sheet = wb['2019']
+sheet = wb['2019']     # сортировка по странам
+quantity_row = sheet.max_row
+quantity_column = sheet.max_column
+data = []
+row_i = []
+for i in range(2, quantity_row + 1):
+    for j in range(1, quantity_column + 1):
+        a = sheet.cell(row=i, column=j)
+        b = str(a.value)
+        row_i.append(b)
+    row_i = tuple(row_i)
+    data.append(row_i)
+    row_i = []
+data.sort(key=lambda product: product[49])
+for i in range(0, len(data)):
+    for j in range(0, len(data[0])):
+        val = data[i][j]
+        sheet.cell(row=i + 2, column=j + 1).value = val
+
+sheet = wb['2019'] # вставляем формулу определение стран по коду
 sheet.insert_cols(idx=66)  # добавляем столбец "Страны"
 sheet['BN1'] = 'Страны'
 quantity_row = sheet.max_row  # считаем количество строк
 for i in range(2, quantity_row + 1):
     formula = '=VLOOKUP(BM' + str(i) + ', Prob!A:B, 2, 0)'
     d = sheet.cell(row=i, column=66, value=formula)
+
 
 wb.save('D:\\Обработка файлов таможни\\Пример_1.xlsx')
 
